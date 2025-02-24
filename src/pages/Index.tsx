@@ -1,13 +1,14 @@
-
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { 
   MessageSquare, 
   Star, 
   TrendingUp, 
   QrCode,
   BarChart,
-  ThumbsUp
+  ThumbsUp,
+  LogIn
 } from "lucide-react";
 
 export default function Index() {
@@ -27,11 +28,17 @@ export default function Index() {
             que aumenta sua reputação online e melhora a experiência do seu restaurante.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg">
-              Comece Gratuitamente
+            <Button size="lg" variant="default" className="text-lg" asChild>
+              <Link to="/chat">
+                <MessageSquare className="mr-2" />
+                Teste Agora
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg">
-              Agende uma Demo
+            <Button size="lg" variant="outline" className="text-lg" asChild>
+              <Link to="/dashboard">
+                <LogIn className="mr-2" />
+                Área Logada
+              </Link>
             </Button>
           </div>
         </div>
@@ -133,9 +140,14 @@ export default function Index() {
               Junte-se a centenas de restaurantes que já estão transformando
               feedbacks em crescimento com o Paprika.
             </p>
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-              Comece Agora Mesmo
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90" asChild>
+                <Link to="/chat">
+                  <MessageSquare className="mr-2" />
+                  Comece Agora Mesmo
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
