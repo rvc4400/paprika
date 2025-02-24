@@ -1,11 +1,13 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import {
   BarChart,
   MessageSquare,
   Users,
   ListFilter,
+  ArrowLeft,
 } from "lucide-react";
 
 const Dashboard = () => {
@@ -39,7 +41,15 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <h1 className="text-3xl font-bold">Dashboard do Restaurante</h1>
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" className="hover:bg-primary/10" asChild>
+              <Link to="/">
+                <ArrowLeft />
+                <span className="sr-only">Voltar para página inicial</span>
+              </Link>
+            </Button>
+            <h1 className="text-3xl font-bold">Dashboard do Restaurante</h1>
+          </div>
           <div className="flex gap-2">
             <Button
               variant={selectedPeriod === "today" ? "default" : "outline"}

@@ -1,8 +1,9 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Send, Map, Star } from "lucide-react";
+import { MessageSquare, Send, Map, Star, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
@@ -36,6 +37,12 @@ const ChatPage = () => {
         <div className="max-w-3xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-2">
+              <Button variant="ghost" size="icon" className="text-white hover:text-white/90" asChild>
+                <Link to="/">
+                  <ArrowLeft />
+                  <span className="sr-only">Voltar para página inicial</span>
+                </Link>
+              </Button>
               <MessageSquare className="text-white" />
               <h1 className="text-xl font-bold text-white">Paprika Feedback</h1>
             </div>
