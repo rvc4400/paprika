@@ -4,8 +4,8 @@ import { QrCode, MessageSquare, BarChart } from "lucide-react";
 const features = [
   {
     icon: QrCode,
-    title: "QR Code Inteligente",
-    description: "Sistema simplificado de feedback via QR code para seus clientes."
+    title: "QR Code Simples e Rápido",
+    description: "Sistema simplificado de feedback via QR code. Instale em minutos e comece a receber feedback instantaneamente!"
   },
   {
     icon: MessageSquare,
@@ -24,10 +24,10 @@ export const Features = () => {
     <section id="features" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          Recursos Principais
+          Tudo que Você Precisa
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          Tudo que você precisa para transformar feedback em crescimento
+          Ferramentas essenciais para transformar feedback em crescimento
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

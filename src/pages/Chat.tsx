@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Send } from "lucide-react";
+import { MessageSquare, Send, Google, Star } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ChatPage = () => {
@@ -13,17 +13,11 @@ const ChatPage = () => {
     e.preventDefault();
     if (!input.trim()) return;
 
-    // Adicionar mensagem do usuário
     const newMessage = { role: "user" as const, content: input.trim() };
     setMessages((prev) => [...prev, newMessage]);
     setInput("");
 
-    // Aqui será integrada a chamada para a API do OpenAI
-    toast({
-      description: "Em breve você receberá uma resposta!",
-    });
-
-    // Simular resposta do assistente (será substituída pela integração com OpenAI)
+    // Simular resposta do assistente
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -39,9 +33,21 @@ const ChatPage = () => {
     <div className="flex flex-col h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 w-full bg-primary/80 backdrop-blur-lg z-50 p-4">
-        <div className="max-w-3xl mx-auto flex items-center gap-2">
-          <MessageSquare className="text-white" />
-          <h1 className="text-xl font-bold text-white">Paprika Feedback</h1>
+        <div className="max-w-3xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <MessageSquare className="text-white" />
+            <h1 className="text-xl font-bold text-white">Paprika Feedback</h1>
+          </div>
+          <div className="flex gap-2">
+            <Button variant="secondary" size="sm" onClick={() => window.open("https://www.google.com/maps", "_blank")}>
+              <Google className="mr-2 h-4 w-4" />
+              Avaliar no Google
+            </Button>
+            <Button variant="secondary" size="sm" onClick={() => window.open("https://www.tripadvisor.com", "_blank")}>
+              <Star className="mr-2 h-4 w-4" />
+              TripAdvisor
+            </Button>
+          </div>
         </div>
       </header>
 
