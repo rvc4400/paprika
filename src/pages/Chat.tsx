@@ -8,26 +8,45 @@ import { Link } from "react-router-dom";
 const ChatPage = () => {
   const [messages, setMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim() || isLoading) return;
 
-    const newMessage = { role: "user" as const, content: input.trim() };
-    setMessages((prev) => [...prev, newMessage]);
+    const userMessage = { role: "user" as const, content: input.trim() };
+    setMessages((prev) => [...prev, userMessage]);
     setInput("");
+    setIsLoading(true);
 
-    // Simular resposta do assistente
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Obrigado pelo seu feedback! Como podemos melhorar ainda mais sua experiência?",
-        },
-      ]);
-    }, 1000);
+    try {
+      const response = await fetch('/functions/v1/chat-completion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [...messages, userMessage],
+        }),
+      });
+
+      if (!response.ok) throw new Error('Falha ao obter resposta');
+
+      const data = await response.json();
+      const assistantMessage = {
+        role: "assistant" as const,
+        content: data.choices[0].message.content,
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+    } catch (error) {
+      toast({
+        title: "Erro",
+        description: "Não foi possível processar sua mensagem. Tente novamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -98,6 +117,13 @@ const ChatPage = () => {
               </div>
             ))
           )}
+          {isLoading && (
+            <div className="flex justify-start">
+              <div className="bg-muted rounded-lg px-4 py-2">
+                Digitando...
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -113,8 +139,9 @@ const ChatPage = () => {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Digite seu feedback..."
             className="flex-1 rounded-lg border bg-background px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            disabled={isLoading}
           />
-          <Button type="submit" className="shrink-0">
+          <Button type="submit" disabled={isLoading}>
             <Send className="h-4 w-4" />
             <span className="sr-only">Enviar mensagem</span>
           </Button>
