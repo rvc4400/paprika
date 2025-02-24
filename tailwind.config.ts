@@ -34,6 +34,7 @@ export default {
         },
         background: "#FEF7CD",
         muted: "#F3F4F6",
+        border: "#E5E7EB", // Added border color
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out forwards",

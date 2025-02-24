@@ -30,7 +30,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-[#E5E7EB];
   }
   body {
     @apply bg-background text-foreground antialiased;
