@@ -33,8 +33,9 @@ export default {
           foreground: "#FFFFFF",
         },
         background: "#FEF7CD",
+        foreground: "#1F2937", // Added foreground color
         muted: "#F3F4F6",
-        border: "#E5E7EB", // Added border color
+        border: "#E5E7EB",
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out forwards",
