@@ -14,12 +14,13 @@ export const Hero = () => {
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           Conecte-se com seus clientes através de um sistema inteligente de feedback
           que aumenta sua reputação online e melhora a experiência do seu restaurante.
+          Integre seus feedbacks do Google Maps e TripAdvisor em um só lugar!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button size="lg" variant="default" className="text-lg" asChild>
             <Link to="/chat">
               <MessageSquare className="mr-2" />
-              Login
+              Testar Agora
             </Link>
           </Button>
         </div>
@@ -27,3 +28,4 @@ export const Hero = () => {
     </section>
   );
 };
+

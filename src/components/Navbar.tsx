@@ -1,7 +1,8 @@
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,8 +26,11 @@ export const Navbar = () => {
             <a href="#benefits" className="text-gray-700 hover:text-primary transition-colors">
               Benefícios
             </a>
-            <Button className="bg-primary hover:bg-primary/90">
-              Começar Agora
+            <Button variant="outline" className="hover:bg-primary/10" asChild>
+              <Link to="/chat">
+                <LogIn className="mr-2" />
+                Login
+              </Link>
             </Button>
           </div>
 
@@ -67,8 +71,11 @@ export const Navbar = () => {
                 Benefícios
               </a>
               <div className="px-4">
-                <Button className="w-full bg-primary hover:bg-primary/90">
-                  Começar Agora
+                <Button variant="outline" className="w-full hover:bg-primary/10" asChild>
+                  <Link to="/chat">
+                    <LogIn className="mr-2" />
+                    Login
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -78,3 +85,4 @@ export const Navbar = () => {
     </nav>
   );
 };
+
