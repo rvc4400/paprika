@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Send, Google, Star } from "lucide-react";
+import { MessageSquare, Send, Map, Star } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ChatPage = () => {
@@ -40,7 +40,7 @@ const ChatPage = () => {
           </div>
           <div className="flex gap-2">
             <Button variant="secondary" size="sm" onClick={() => window.open("https://www.google.com/maps", "_blank")}>
-              <Google className="mr-2 h-4 w-4" />
+              <Map className="mr-2 h-4 w-4" />
               Avaliar no Google
             </Button>
             <Button variant="secondary" size="sm" onClick={() => window.open("https://www.tripadvisor.com", "_blank")}>
