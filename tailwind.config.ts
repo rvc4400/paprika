@@ -21,21 +21,21 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#ea384c",
+          DEFAULT: "#F97316",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#ea384c",
-          foreground: "#FFFFFF",
+          DEFAULT: "#FEC6A1",
+          foreground: "#1F2937",
         },
         accent: {
           DEFAULT: "#ea384c",
           foreground: "#FFFFFF",
         },
-        background: "#000000",
-        foreground: "#FFFFFF",
-        muted: "#1A1A1A",
-        border: "#333333",
+        background: "#FEF7CD",
+        foreground: "#1F2937", // Added foreground color
+        muted: "#F3F4F6",
+        border: "#E5E7EB",
       },
       animation: {
         "fade-in": "fadeIn 0.5s ease-in-out forwards",
