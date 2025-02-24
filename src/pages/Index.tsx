@@ -1,3 +1,4 @@
+
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -28,16 +29,16 @@ export default function Index() {
             que aumenta sua reputação online e melhora a experiência do seu restaurante.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" variant="default" className="text-lg" asChild>
-              <Link to="/chat">
-                <MessageSquare className="mr-2" />
-                Teste Agora
-              </Link>
-            </Button>
             <Button size="lg" variant="outline" className="text-lg" asChild>
               <Link to="/dashboard">
                 <LogIn className="mr-2" />
                 Área Logada
+              </Link>
+            </Button>
+            <Button size="lg" variant="default" className="text-lg" asChild>
+              <Link to="/chat">
+                <MessageSquare className="mr-2" />
+                Teste Agora
               </Link>
             </Button>
           </div>
