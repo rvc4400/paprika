@@ -1,27 +1,29 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Send, Mic, MapPin, Star } from "lucide-react";
+import { MessageSquare, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
   const [input, setInput] = useState("");
-  const [isRecording, setIsRecording] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
+    // Adicionar mensagem do usuário
     const newMessage = { role: "user" as const, content: input.trim() };
     setMessages((prev) => [...prev, newMessage]);
     setInput("");
 
+    // Aqui será integrada a chamada para a API do OpenAI
     toast({
       description: "Em breve você receberá uma resposta!",
     });
 
+    // Simular resposta do assistente (será substituída pela integração com OpenAI)
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -33,40 +35,6 @@ const ChatPage = () => {
     }, 1000);
   };
 
-  const handleVoiceRecord = () => {
-    if (!isRecording) {
-      // Solicitar permissão do microfone
-      navigator.mediaDevices
-        .getUserMedia({ audio: true })
-        .then((stream) => {
-          setIsRecording(true);
-          toast({
-            description: "Gravando áudio... Clique novamente para parar.",
-          });
-        })
-        .catch((err) => {
-          toast({
-            variant: "destructive",
-            description: "Erro ao acessar o microfone. Por favor, permita o acesso.",
-          });
-        });
-    } else {
-      setIsRecording(false);
-      toast({
-        description: "Gravação finalizada!",
-      });
-    }
-  };
-
-  const openExternalReview = (platform: "google" | "tripadvisor") => {
-    // Aqui você deve substituir pelos links reais do seu estabelecimento
-    const urls = {
-      google: "https://www.google.com/maps/place/seu-restaurante",
-      tripadvisor: "https://www.tripadvisor.com/seu-restaurante",
-    };
-    window.open(urls[platform], "_blank");
-  };
-
   return (
     <div className="flex flex-col h-screen bg-background">
       {/* Header */}
@@ -76,26 +44,6 @@ const ChatPage = () => {
           <h1 className="text-xl font-bold text-white">Paprika Feedback</h1>
         </div>
       </header>
-
-      {/* External Review Buttons */}
-      <div className="fixed top-20 right-4 flex flex-col gap-2 z-40">
-        <Button
-          variant="secondary"
-          className="w-12 h-12 rounded-full p-0"
-          onClick={() => openExternalReview("google")}
-        >
-          <MapPin className="h-6 w-6" />
-          <span className="sr-only">Avaliar no Google Maps</span>
-        </Button>
-        <Button
-          variant="secondary"
-          className="w-12 h-12 rounded-full p-0"
-          onClick={() => openExternalReview("tripadvisor")}
-        >
-          <Star className="h-6 w-6" />
-          <span className="sr-only">Avaliar no TripAdvisor</span>
-        </Button>
-      </div>
 
       {/* Chat Messages */}
       <div className="flex-1 overflow-y-auto pt-20 pb-24 px-4">
@@ -134,16 +82,6 @@ const ChatPage = () => {
         className="fixed bottom-0 w-full bg-background border-t p-4"
       >
         <div className="max-w-3xl mx-auto flex gap-2">
-          <Button
-            type="button"
-            variant="outline"
-            size="icon"
-            className={`shrink-0 ${isRecording ? "bg-red-100" : ""}`}
-            onClick={handleVoiceRecord}
-          >
-            <Mic className={`h-4 w-4 ${isRecording ? "text-red-500" : ""}`} />
-            <span className="sr-only">Gravar áudio</span>
-          </Button>
           <input
             type="text"
             value={input}
