@@ -33,26 +33,38 @@ const ChatPage = () => {
     <div className="flex flex-col h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 w-full bg-primary/80 backdrop-blur-lg z-50 p-4">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <MessageSquare className="text-white" />
-            <h1 className="text-xl font-bold text-white">Paprika Feedback</h1>
-          </div>
-          <div className="flex gap-2">
-            <Button variant="secondary" size="sm" onClick={() => window.open("https://www.google.com/maps", "_blank")}>
-              <Map className="mr-2 h-4 w-4" />
-              Avaliar no Google
-            </Button>
-            <Button variant="secondary" size="sm" onClick={() => window.open("https://www.tripadvisor.com", "_blank")}>
-              <Star className="mr-2 h-4 w-4" />
-              TripAdvisor
-            </Button>
+        <div className="max-w-3xl mx-auto">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <MessageSquare className="text-white" />
+              <h1 className="text-xl font-bold text-white">Paprika Feedback</h1>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Button 
+                variant="secondary" 
+                size="sm" 
+                className="w-full sm:w-auto text-sm"
+                onClick={() => window.open("https://www.google.com/maps", "_blank")}
+              >
+                <Map className="mr-2 h-4 w-4" />
+                Avaliar no Google
+              </Button>
+              <Button 
+                variant="secondary" 
+                size="sm"
+                className="w-full sm:w-auto text-sm"
+                onClick={() => window.open("https://www.tripadvisor.com", "_blank")}
+              >
+                <Star className="mr-2 h-4 w-4" />
+                TripAdvisor
+              </Button>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto pt-20 pb-24 px-4">
+      <div className="flex-1 overflow-y-auto pt-32 sm:pt-24 pb-24 px-4">
         <div className="max-w-3xl mx-auto space-y-4">
           {messages.length === 0 ? (
             <div className="text-center text-muted-foreground p-8">
@@ -68,7 +80,7 @@ const ChatPage = () => {
                 }`}
               >
                 <div
-                  className={`rounded-lg px-4 py-2 max-w-[80%] ${
+                  className={`rounded-lg px-4 py-2 max-w-[85%] sm:max-w-[70%] ${
                     message.role === "user"
                       ? "bg-primary text-white"
                       : "bg-muted"
