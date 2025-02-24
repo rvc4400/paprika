@@ -27,7 +27,7 @@ export const Navbar = () => {
               Benefícios
             </a>
             <Button variant="outline" className="hover:bg-primary/10" asChild>
-              <Link to="/chat">
+              <Link to="/dashboard">
                 <LogIn className="mr-2" />
                 Login
               </Link>
@@ -72,7 +72,7 @@ export const Navbar = () => {
               </a>
               <div className="px-4">
                 <Button variant="outline" className="w-full hover:bg-primary/10" asChild>
-                  <Link to="/chat">
+                  <Link to="/dashboard">
                     <LogIn className="mr-2" />
                     Login
                   </Link>
