@@ -69,7 +69,7 @@ const ChatPage = () => {
           {messages.length === 0 ? (
             <div className="text-center text-muted-foreground p-8">
               <MessageSquare className="mx-auto h-12 w-12 mb-2 opacity-50" />
-              <p>Comece a conversa compartilhando seu feedback!</p>
+              <p>Olá! Sou um assistente virtual alimentado por GPT, pronto para receber seu feedback sobre o Restaurante X. Sua opinião é muito importante para continuarmos melhorando nossa experiência gastronômica!</p>
             </div>
           ) : (
             messages.map((message, index) => (
